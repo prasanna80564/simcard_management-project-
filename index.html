@@ -19,11 +19,19 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>prasanna</td>
-                <td>prasanna@gmail.com</td>
-                <td>8056432913</td>
-                <td>60 barn hill</td>
-                <td>
-                    <a href="/customers/edit/1">Edit</a>
-                    <a href="/customers/delete/1">Delete</a>
+            <% customers.forEach(customer => { %>
+                <tr>
+                    <td><%= customer.name %></td>
+                    <td><%= customer.email %></td>
+                    <td><%= customer.phone %></td>
+                    <td><%= customer.address %></td>
+                    <td>
+                        <a href="/customers/edit/<%= customer._id %>">Edit</a>
+                        <a href="/customers/delete/<%= customer._id %>">Delete</a>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</body>
+</html>
