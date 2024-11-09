@@ -1,0 +1,17 @@
+{
+  "name": "simcard_management-project-",
+  "version": "1.0.0",
+  "description": "This is a simplified verison of a telecom retail simcard management system. the system is designed to manage customers,sim card and the mobile plan. => the restfull api manages the CRUD operations    => creating ,updating , reading,deleting customers,sim cards details and plans",
+  "main": "app.js",
+  "scripts": {
+   "start" : "nodemon app.js"
+  },
+  "author": "prasanna",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1",
+    "mongodb": "^6.10.0",
+    "mongoose": "^8.8.1",
+    "nodemon": "^3.1.7"
+  }
+}
