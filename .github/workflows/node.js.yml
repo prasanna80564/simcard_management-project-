@@ -24,12 +24,9 @@ jobs:
     - name: Install dependencies
       run: npm install  # Install all the project dependencies
 
-    # Removed the test step
-    # - name: Run tests
-    #   run: npm test  # Run the tests if you have any (optional step)
-
-    - name: Build project
-      run: npm run build  # Run the build command if you have one (optional step)
+    # Removed the build step
+    # - name: Build project
+    #   run: npm run build  # Run the build command if you have one (optional step)
 
     - name: Deploy
       run: npm run deploy  # Deploy your application if you have a deploy script (optional)
