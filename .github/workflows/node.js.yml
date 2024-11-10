@@ -3,34 +3,36 @@ name: Node.js CI
 on:
   push:
     branches:
-      - main
+      - main  # Trigger on push to the 'main' branch
   pull_request:
     branches:
-      - main
+      - main  # Trigger on pull request to 'main' branch
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # Use the latest Ubuntu runner
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+    - name: Checkout repository
+      uses: actions/checkout@v3  # Checkout your repository
 
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '16'  # You can update the version if needed
+        node-version: '18'  # Specify the Node.js version you want to use
 
     - name: Install dependencies
-      run: npm install
+      run: npm install  # Install all the project dependencies
 
-    # Skipping the npm test step for now
-    # - name: Run tests
-    #   run: npm test
+    - name: Run tests
+      run: npm test  # Run the tests if you have any (optional step)
 
-    - name: Lint code
-      run: npm run lint  # You can remove this step if you don't have a linter set up
+    - name: Build project
+      run: npm run build  # Run the build command if you have one (optional step)
 
-    - name: Deploy to server (optional, if you have deployment steps)
-      run: |
-        echo "Add deployment commands here"  # Replace with your deployment steps, if any
+    - name: Deploy
+      run: npm run deploy  # Deploy your application if you have a deploy script (optional)
+
+    # Uncomment below step if you add linting later
+    # - name: Lint code
+    #   run: npm run lint
