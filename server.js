@@ -10,6 +10,14 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+app.use(express.static(path.join(__dirname, 'public')));
+
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+
 mongoose.connect('mongodb://localhost:27017/telecom')
     .then(() => console.log('connected to MongoDB'))
     .catch(err => console.log('failed to connect:',err));
