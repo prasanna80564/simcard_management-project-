@@ -1,102 +1,65 @@
-const { response } = require("express");
-
 function fetchCustomers() {
     fetch('http://localhost:3000/customers')
-    .then(response => response.json())
-    .then(customers => {
+        .then(response => response.json())
+        .then(customers => {
 
-        const table = document.getElementById('customerTable');
-        table.innerHTML = `
-        <tr>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Phone</th>
-        <th>Actions</th>
-        </tr>`;
+            const table = document.getElementById('customerTable');
+            table.innerHTML = `
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Actions</th>
+            </tr>`;
 
-        customers.array.forEach(element => {
-            const row = table.insertRow();
-            row.innerHTML = `
-            <td>${customer.name}<\td>
-            <td>${customer.email}<\td>
-            <td>${customer.phone}<\td>
-            <td>
-            <a href="edit-customer.html?id=${customer._id}">Edit</a>
-            <button onclick="deleteCustomer('${customer._id}')">DELETE</button>
-            
-            </td>`;
+            customers.forEach(customer => {
+                const row = table.insertRow();
+                row.innerHTML = `
+                <td>${customer.name}</td>
+                <td>${customer.email}</td>
+                <td>${customer.phone}</td>
+                <td>
+                    <a href="edit-customer.html?id=${customer._id}">Edit</a>
+                    <button onclick="deleteCustomer('${customer._id}')">DELETE</button>
+                </td>`;
+            });
 
-
-        });
-
-    })
-
-    .catch(error => console.error('error fetching customers:',error));
-
+        })
+        .catch(error => console.error('Error fetching customers:', error));
 }
 
-// delete 
-
+// Delete customer
 function deleteCustomer(id) {
-    fetch(`http://localhost:3000/customers/${id}`,{
-        method : 'DELETE'
+    fetch(`http://localhost:3000/customers/${id}`, {
+        method: 'DELETE'
     })
-
     .then(response => response.json())
     .then(() => {
-        alert('customer is successfully deleted!');
+        alert('Customer successfully deleted!');
         fetchCustomers();
-
-
     })
-    .catch(error => console.error('errror deleting the customer:',error));
+    .catch(error => console.error('Error deleting customer:', error));
 }
 
-// new customer 
-
-document.getElementById('addCustomerForm').addEventListener('submit' , function (e){
+// Add new customer
+document.getElementById('addCustomerForm').addEventListener('submit', function(e) {
     e.preventDefault();
 
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const phone = document.getElementById('phone').value;
 
-    const newCustomer = {name, email, phone};
+    const newCustomer = { name, email, phone };
 
-    fetch('http://localhost:3000/customers/add',{
-
-        method: 'post'
+    fetch('http://localhost:3000/customers/add', {
+        method: 'POST',
         body: JSON.stringify(newCustomer),
-        headers: {'content-Type': 'application/json'}
+        headers: { 'Content-Type': 'application/json' }
     })
-
     .then(response => response.json())
     .then(() => {
-        alert('customer is added successfully!');
+        alert('Customer added successfully!');
         fetchCustomers();
-
     })
-    .catch(error => console.error('error adding customer:',error));
-
-
+    .catch(error => console.error('Error adding customer:', error));
 });
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
