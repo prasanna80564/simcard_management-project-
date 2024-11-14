@@ -34,7 +34,7 @@ function fetchCustomers() {
       .then(response => response.json())
       .then(() => {
         alert('Customer deleted successfully!');
-        fetchCustomers();  // Refresh the customer list
+        fetchCustomers();  
       })
       .catch(error => console.error('Error deleting customer:', error));
   }
@@ -57,7 +57,7 @@ function fetchCustomers() {
       .then(response => response.json())
       .then(() => {
         alert('Customer added successfully!');
-        fetchCustomers();  // Refresh the customer list
+        fetchCustomers();  
       })
       .catch(error => console.error('Error adding customer:', error));
   });
