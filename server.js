@@ -3,15 +3,17 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
-const Customer = require('./models/Customer');
+const customerRoutes = require('./routes/customerRoutes');
 
 
 const app = express();
 
+app.use(express.static(path.join(__dirname,'public')));
+
 app.use(cors());
 app.use(bodyParser.json());
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/customers', customerRoutes);
 
 
 app.get('/', (req, res) => {
