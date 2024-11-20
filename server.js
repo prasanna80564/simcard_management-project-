@@ -25,11 +25,12 @@ app.get('/', (req, res) => {
 }); 
 
 
-mongoose.connect('mongodb://localhost:27017/telecom')
-    .then(() => console.log('connected to MongoDB'))
-    .catch(err => console.log('failed to connect:', err));
-
-
+mongoose.connect('mongodb://127.0.0.1:27017/Customers', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+    .then(() => console.log('Connected to MongoDB'))
+    .catch((error) => console.error('Failed to connect to MongoDB', error));
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
