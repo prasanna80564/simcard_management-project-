@@ -24,13 +24,13 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 }); 
 
-
-mongoose.connect('mongodb://127.0.0.1:27017/Customers', {
+mongoose.connect('mongodb+srv://admin:prasanna2703@cluster1.wzuur.mongodb.net/telecom?retryWrites=true&w=majority', {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-    .then(() => console.log('Connected to MongoDB'))
-    .catch((error) => console.error('Failed to connect to MongoDB', error));
+    useUnifiedTopology: true
+})
+.then(() => console.log('Connected to MongoDB Atlas'))
+.catch(err => console.error('Failed to connect:', err));
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
