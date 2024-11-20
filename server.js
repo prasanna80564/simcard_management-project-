@@ -24,6 +24,7 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 }); 
 
+
 mongoose.connect('mongodb+srv://admin:prasanna2703@cluster1.wzuur.mongodb.net/telecom?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true
