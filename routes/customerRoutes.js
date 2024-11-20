@@ -26,3 +26,25 @@ router.get('/:id',async(req,res) => {
     }
 });
 
+// add new customer 
+
+router.post('/add',async (req,res)=> {
+    const customer = new Customer({
+        name:req.body.name,
+        email: req.body.email,
+        phone: req.body.phone
+    });
+
+    try{
+        const newCustomer = await customer.save();
+        res.status(201).json(newCustomer);
+
+    }
+
+    catch(err) {
+        res.status(400).json({message: err.message});
+
+
+    }
+
+});
