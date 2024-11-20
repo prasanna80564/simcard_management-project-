@@ -14,3 +14,14 @@ router.get('/', async (req,res) => {
     }
 });
 module.exports = Customer;
+
+// for customer id
+
+router.get('/:id',async(req,res) => {
+    try{const customer = await Customer.findById(req.params.id);
+        res.json(customer);
+    }
+    catch (err) {
+        res.status(500).json({message: err.message})
+    }
+})
