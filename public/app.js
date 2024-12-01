@@ -13,3 +13,36 @@ document.getElementById("customerSimForm").addEventListener("submit", function (
 
 
 });
+
+//fetch customers
+
+function fetchCustomers() {
+  const customers = JSON.parse(localStorage.getItem("customers") || "[]");
+  const table = document.getElementById("customerTable");
+
+
+  table.innerHTML = `
+  <tr>
+  <th>Name</th>
+  <th>Email</th>
+  <th>Phone</th>
+  <th>Plan</th>
+  <th>Active</th>
+  <th>Action</th>
+  </tr>`;
+
+  customers.forEach((customer) => {
+    const row = table.inertRow();
+    row.innerHTML = `
+    <td>${customer.name}</td>
+    <td>${customer.email}</td>
+    <td>${customer.phoneNumber}</td>
+    <td>${customer.plan}</td>
+    <td>${customer.isActive ? "Yes" : "No"}</td>
+    <td>
+      <buttton onclick="editCustomers(${customer.id})">Edit</button>
+      <button onclick="deleteCustomer(${customer.id})">Delete</button>
+      </td>`;
+  });
+}
+
