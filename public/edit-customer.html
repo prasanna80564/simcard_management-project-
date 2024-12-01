@@ -23,11 +23,29 @@
 
        </fieldset>
 
-       
+       <!--sim card details-->
+
+       <fieldset>
+        <legend>SIM Card Details</legend>
+        <label for="editPhoneNumber">Phone Number:</label>
+        <input type="text" id="editPhoneNumber" required><br>
+        <label for="editplan">Plan:</label>
+        <select id="editPlan" required>
+            <option value="Basic">Basic</option>
+            <option value="Gold">Gold</option>
+            <option value="Platinum">Platinum</option>
+          </select><br>
+          <label for="editIsActive">Active:</label>
+          <input type="checkbox" id="editIsActive"><br>
+       </fieldset>
+
+       <button type="submit">Update Customer</button>
     </form>
 
-    <button onclick="deleteCustomer()">Delete Customer</button>
-    <a href="index.html">Back to customer list</a>
+       
+   
+
+   
 
     <script src="edit-customer.js"></script>
 </body>
