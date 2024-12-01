@@ -23,8 +23,20 @@
             <!--sim card details-->
             <fieldset>
                 <legend>SIM Card <Details></Details> </legend>
+                <label for="phoneNumber">Phone Number:</label>
+                <input type="text" id="phoneNumber" required><br>
+                <label for="plan">Plan:</label>
+                <select id="plan" required>
+                    <option value="Basic">Basic</option>
+                    <option value="Gold">Gold</option>
+                    <option value="Platinum">Platinum</option>
+                </select><br>
+
+                <label for="isActive">"Active:</label>
+                <input type="checkbox" id="isActive"><br>
             </fieldset>
             
+            <button type="submit">Add customersim</button>
     
         </form>
 
