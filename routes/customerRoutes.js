@@ -25,3 +25,10 @@ router.get('/:id', async (req, res) => {
   }
 
 });
+
+router.post('/add',async (req, res) => {
+  const customer = new Customer({
+    name: req.body.name,
+    email: req.body.email,
+  })
+});
