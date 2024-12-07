@@ -15,3 +15,13 @@ router.get('/', async (req,res) => {
 
 });
 
+router.get('/:id', async (req, res) => {
+  try {
+    const customer = await Customer.findById(req.params.id);
+    res.json(customer);
+  }
+  catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+
+});
