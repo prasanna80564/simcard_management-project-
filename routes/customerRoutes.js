@@ -46,3 +46,26 @@ router.post('/add', async (req, res) => {
     res.status(400).json({ message: err.message});
   }
 });
+
+router.put('/:id', async (req, res) => {
+  try {
+    const updatedCustomer = await Customer.findByIdAndUpdate(
+      req.params.id,
+      {
+        name: req.body.name,
+        email: req.body.email,
+        simCard: req.body.simCard
+
+
+      },
+      { new: true } 
+    );
+    res.json(updatedCustomer);
+  }
+  catch (err) {
+    res.status(400).json({ message: err.message });
+
+  }
+
+});
+
