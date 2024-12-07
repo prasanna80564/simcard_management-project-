@@ -10,7 +10,7 @@ This is a simplified verison of a telecom retail simcard management system. the 
 FEATURES:
     => CUSTOMERS MANAGEMENT = add,view,update,and delete customer details
     => sim card management = sim card activation,status,assign to the customers 
-    =>plan managemnt = view,add,update and delete plan 
+    =>plan description
 
 Technologies:
     =>NODE.JS,EXPRESS.JS
