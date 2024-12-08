@@ -10,9 +10,6 @@ if (customer) {
     document.getElementById("editPhoneNumber").value = customer.phoneNumber;
     document.getElementById("editPlan").value = customer.plan;
     document.getElementById("editIsActive").checked = customer.isActive;
-
-
-    
 }
 
 document.getElementById("editCustomerForm").addEventListener("submit", function (e) {
