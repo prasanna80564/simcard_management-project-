@@ -45,7 +45,7 @@ function fetchCustomers() {
   });
 }
 
-// edit-customer.html
+// edit-customer.html 
 function editCustomer(customerId) {
   window.location.href = `edit-customer.html?id=${customerId}`;
 }
