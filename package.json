@@ -4,7 +4,8 @@
   "description": "This is a simplified verison of a telecom retail simcard management system. the system is designed to manage customers,sim card and the mobile plan. => the restfull api manages the CRUD operations    => creating ,updating , reading,deleting customers,sim cards details and plans",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "test": "jest"
   },
   "author": "prasanna",
   "license": "ISC",
