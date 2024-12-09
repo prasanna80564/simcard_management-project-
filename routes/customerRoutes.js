@@ -2,30 +2,27 @@ const express = require('express');
 const router = express.Router();
 const Customer = require('../models/Customer');
 
-
-router.get('/', async (req,res) => {
+// Get all customers
+router.get('/', async (req, res) => {
   try {
     const customers = await Customer.find();
     res.json(customers);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
-  catch (err) {
-    res.status(500).json({ message: err.message});
-  }
-
-
 });
 
+// Get customer by ID
 router.get('/:id', async (req, res) => {
   try {
     const customer = await Customer.findById(req.params.id);
     res.json(customer);
-  }
-  catch (err) {
+  } catch (err) {
     res.status(500).json({ message: err.message });
   }
-
 });
 
+// Add new customer
 router.post('/add', async (req, res) => {
   const customer = new Customer({
     name: req.body.name,
@@ -35,18 +32,17 @@ router.post('/add', async (req, res) => {
       plan: req.body.simCard.plan,
       isActive: req.body.simCard.isActive
     }
-    
   });
 
   try {
     const newCustomer = await customer.save();
     res.status(201).json(newCustomer);
-  }
-  catch (err) {
-    res.status(400).json({ message: err.message});
+  } catch (err) {
+    res.status(400).json({ message: err.message });
   }
 });
 
+// Update customer
 router.put('/:id', async (req, res) => {
   try {
     const updatedCustomer = await Customer.findByIdAndUpdate(
@@ -55,31 +51,23 @@ router.put('/:id', async (req, res) => {
         name: req.body.name,
         email: req.body.email,
         simCard: req.body.simCard
-
-
       },
-      { new: true } 
+      { new: true }
     );
     res.json(updatedCustomer);
-  }
-  catch (err) {
+  } catch (err) {
     res.status(400).json({ message: err.message });
-
   }
-
 });
 
-router.delete('/:id', async (req,res) => {
+// Delete customer
+router.delete('/:id', async (req, res) => {
   try {
     await Customer.findByIdAndDelete(req.params.id);
-    res.json({ message: 'Customer deleted '});
-  }
-  catch (err) {
+    res.json({ message: 'Customer deleted' });
+  } catch (err) {
     res.status(500).json({ message: err.message });
   }
 });
 
-
-
-module.exports =router;
-
+module.exports = router;
