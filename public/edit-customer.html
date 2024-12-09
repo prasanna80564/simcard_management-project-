@@ -1,58 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EDIT CUSTOMER</title>
-    <link rel="stylesheet" href="styles.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Customer</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <h1>EDIT CUSTOMER</h1>
-    <form id="editCustomerForm"></form>
+  <h1>Edit Customer</h1>
+  <form id="editCustomerForm">
+    <!-- Customer Details -->
+    <fieldset>
+      <legend>Customer Details</legend>
+      <label for="editCustomerName">Customer Name:</label>
+      <input type="text" id="editCustomerName" required><br>
+      <label for="editCustomerEmail">Email:</label>
+      <input type="email" id="editCustomerEmail" required><br>
+    </fieldset>
 
-        <!--customers-->
+    <!-- SIM Card Details -->
+    <fieldset>
+      <legend>SIM Card Details</legend>
+      <label for="editPhoneNumber">Phone Number:</label>
+      <input type="text" id="editPhoneNumber" required><br>
+      <label for="editPlan">Plan:</label>
+      <select id="editPlan" required>
+        <option value="Basic">Basic</option>
+        <option value="Gold">Gold</option>
+        <option value="Platinum">Platinum</option>
+      </select><br>
+      <label for="editIsActive">Active:</label>
+      <input type="checkbox" id="editIsActive"><br>
+    </fieldset>
 
-    
-       <fieldset>
-        <legend>Customer Details</legend>
-        <label for="editCustomerName">Customer Name:</label>
-        <input type="text" id="editCustomerName" required><br>
-        <label for="editCustomerEmail">Email:</label>
-        <input type="email" id="editCustomerEmail" required><br>
+    <button type="submit">Update Customer</button>
+  </form>
 
-       </fieldset>
-
-       <!--sim card details-->
-
-       <fieldset>
-        <legend>SIM Card Details</legend>
-        <label for="editPhoneNumber">Phone Number:</label>
-        <input type="text" id="editPhoneNumber" required><br>
-        <label for="editplan">Plan:</label>
-        <select id="editPlan" required>
-            <option value="Ireland Plus">Ireland Plus</option>
-            <option value="Go Unlimited">Go Unlimited</option>
-            <option value="Unlimited Plus">Unlimited Plus</option>
-          </select><br>
-          <label for="editIsActive">Active:</label>
-          <input type="checkbox" id="editIsActive"><br>
-       </fieldset>
-
-       <button type="submit">Update Customer</button>
-    </form>
-
-       
-   
-
-   
-
-    <script src="edit-customer.js"></script>
+  <script src="edit-customer.js"></script>
 </body>
-   
-
-
-
-
 </html>
