@@ -58,3 +58,31 @@ describe('Customer API', () => {
       expect(Array.isArray(res.body)).toBe(true);
       expect(res.body.length).toBeGreaterThan(0); // Now it should pass
     });
+
+    it('should delete a customer', async () => {
+      const customer = await Customer.create({
+        name: 'Test2',
+        email: 'test2@example.com',
+        phoneNumber: '5566778899',
+        simCard: {
+          plan: 'Unlimited Plus',
+          phoneNumber: '5566778899',
+        },
+      });
+  
+      const res = await request(app)
+        .delete(`/customers/${customer._id}`)
+        .expect(200);
+  
+      expect(res.body.message).toBe('Customer deleted successfully');
+    });
+
+
+
+
+
+
+
+
+
+});
