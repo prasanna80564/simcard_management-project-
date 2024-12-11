@@ -56,7 +56,7 @@ describe('Customer API', () => {
         .expect(200);
   
       expect(Array.isArray(res.body)).toBe(true);
-      expect(res.body.length).toBeGreaterThan(0); // Now it should pass
+      expect(res.body.length).toBeGreaterThan(0); 
     });
 
     it('should delete a customer', async () => {
@@ -75,6 +75,25 @@ describe('Customer API', () => {
         .expect(200);
   
       expect(res.body.message).toBe('Customer deleted successfully');
+    });
+
+    it('should fetch a customer by ID', async () => {
+      const customer = await Customer.create({
+        name: 'Sarath',
+        email: 'sarath@example.com',
+        phoneNumber: '1122334455',
+        simCard: {
+          plan: 'Standard',
+          phoneNumber: '1122334455',
+        },
+      });
+  
+      const res = await request(app)
+        .get(`/customers/${customer._id}`)
+        .expect(200);
+  
+      expect(res.body).toHaveProperty('_id');
+      expect(res.body.name).toBe('Sarath');
     });
 
 
