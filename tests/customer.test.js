@@ -10,3 +10,8 @@ beforeAll(async () => {
     }
   });
 
+afterAll(async () => {
+    await mongoose.connection.dropDatabase();  // Clean up the database after tests
+    await mongoose.connection.close();  // Close the connection
+  });
+  
