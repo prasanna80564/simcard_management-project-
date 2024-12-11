@@ -15,7 +15,7 @@ afterAll(async () => {
     await mongoose.connection.close();  // Close the connection
   });
   
-  describe('Customer API', () => {
+describe('Customer API', () => {
   
     // Test for creating a new customer
     it('should create a new customer', async () => {
