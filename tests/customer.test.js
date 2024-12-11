@@ -20,11 +20,11 @@ describe('Customer API', () => {
     // Test for creating a new customer
     it('should create a new customer', async () => {
       const newCustomer = {
-        name: 'John Doe',
-        email: 'john@example.com',
+        name: 'test',
+        email: 'test@example.com',
         phoneNumber: '1234567890',
         simCard: {
-          plan: 'Basic',
+          plan: 'Go Unlimited',
           phoneNumber: '1234567890',
         },
       };
@@ -37,4 +37,24 @@ describe('Customer API', () => {
       expect(res.body).toHaveProperty('_id');
       expect(res.body.name).toBe(newCustomer.name);
       expect(res.body.email).toBe(newCustomer.email);
+    });
+
+    it('should fetch all customers', async () => {
+      // Create a customer before fetching
+      await Customer.create({
+        name: 'Jane Doe',
+        email: 'jane@example.com',
+        phoneNumber: '0987654321',
+        simCard: {
+          plan: 'Premium',
+          phoneNumber: '0987654321',
+        },
+      });
+  
+      const res = await request(app)
+        .get('/customers')
+        .expect(200);
+  
+      expect(Array.isArray(res.body)).toBe(true);
+      expect(res.body.length).toBeGreaterThan(0); // Now it should pass
     });
