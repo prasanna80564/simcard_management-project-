@@ -15,3 +15,26 @@ afterAll(async () => {
     await mongoose.connection.close();  // Close the connection
   });
   
+  describe('Customer API', () => {
+  
+    // Test for creating a new customer
+    it('should create a new customer', async () => {
+      const newCustomer = {
+        name: 'John Doe',
+        email: 'john@example.com',
+        phoneNumber: '1234567890',
+        simCard: {
+          plan: 'Basic',
+          phoneNumber: '1234567890',
+        },
+      };
+  
+      const res = await request(app)
+        .post('/customers')
+        .send(newCustomer)
+        .expect(201); // Expecting HTTP 201 Created
+  
+      expect(res.body).toHaveProperty('_id');
+      expect(res.body.name).toBe(newCustomer.name);
+      expect(res.body.email).toBe(newCustomer.email);
+    });
