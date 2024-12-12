@@ -70,6 +70,10 @@ This project is a **Customer and SIM Card Management System** built using **Node
 http://localhost:3000/customers
 
 
+## Documentation
+[Hotel Management System Documentation](https://docs.google.com/document/d/1fknGEZg-wWIsQKdS7JvjCaYHYD_Cc_MnmkOgW4lGIWc/edit?usp=sharing)
+
+
 
 
 
